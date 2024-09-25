@@ -1,0 +1,64 @@
+.header {
+	background: linear-gradient(45deg,#3282a6, #ff6b6b, #0000ff);
+	background-size: 400% 400%;
+	animation: animate 3s infinite alternate;
+    min-height: 100vh;
+}
+.navbar{
+	background: transparent !important;
+}
+.navbar-brand{
+	color: #fff;
+	font-family: "Bebas Neue", sans-serif;
+	font-size: 30px;
+}
+.navbar-brand:focus, 
+.navbar-brand:hover {
+	color: #fff !important;
+}
+.nav-link{
+	color: #fff;
+	font-family: "Montserrat", sans-serif;
+	font-weight: 600;
+}
+.containerb{
+    padding-top: 70px;
+    padding-left: 130px;
+}
+.search{
+    --padding: 14px;
+	width: 1100px;
+	display: flex;
+	align-items: center;
+	padding: var(--padding);
+	border-radius: 28px;
+	background: white;
+    transition: box-shadow 0.25s;
+}
+.search:focus-within{
+    box-shadow: 0 0 2px rgba(0,0,0,0.75);
+}
+.search-input{
+	font-size: 16px;
+	font-family: 'Lexend',sans-serif;
+	color: #333333;
+	margin-left: var(--padding);
+	outline: none;
+	border: none;
+	background: transparent;
+	width: 1100px;
+}
+.search-input::placeholder,
+.search-icon {
+    color:rgba(0,0,0,0.5);
+}
+.imgblog{
+    width:500px; height:300px;
+    margin-left: 400px;
+    border-radius: 5%;
+    margin-bottom: 30px;
+}
+.ttl{
+    padding-top: 50px;
+    padding-bottom: 10px;
+}

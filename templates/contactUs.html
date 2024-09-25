@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport"content="width=device-width, initial-scale=1.0">
+	<title>Contactez-nous</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.0/css/bootstrap.min.css" rel="stylesheet">
+    {% load static %}
+	<link rel="icon" href="static/Logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="{% static "contactstyle.css" %}">
+</head>
+
+<body>
+    <div class="header">
+        <nav class="navbar navbar-expand-lg bg-light text-center ">
+  <div class="container">
+    <a class="navbar-brand" href="https://archivage.com/">Archivage</a>
+    <button class="navbar-toggler bg-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+			<a class="nav-link" href="https://archivage.com/">Accueil</a>
+		  </li>
+		  <li class="nav-item">
+			  <a class="nav-link" href="{% url 'about' %}">à propos</a>
+		  </li>  
+		  <li class="nav-item">
+			<a class="nav-link" href="{% url 'contact' %}">Contact</a>
+		  </li>  
+		  <li class="nav-item">
+			<a class="nav-link" href="{% url 'pdf' %}">Extraire le PDF</a>
+		  </li> 
+		  <li class="nav-item">
+			<a class="nav-link" href="{% url 'OCR' %}">OCR</a>
+		  </li> 
+		              
+      </ul>
+    </div>
+  </div>
+</nav>
+
+</div>
+
+	<!-- banner section -->
+	<section class="banner">
+		<img src=
+"https://media.geeksforgeeks.org/wp-content/uploads/20230822131732/images.png"
+			alt="Welcome to our Contact Us page">
+		<h1>Prenez contact avec nous</h1>
+		<p>
+		Nous sommes là pour répondre à toutes vos questions.
+		</p>
+	</section>
+
+	<!-- Contact form -->
+	<section class="contact-form">
+		<div class="form-container">
+			<h2>Vos détails</h2>
+			<form>
+				{% csrf_token %}
+				<label for="name">Nom: </label>
+				<input type="text" id="name" name="name" required>
+
+				<label for="email">email </label>
+				<input type="email" id="email" name="email" required>
+
+				<label for="phone">phone </label>
+				<input type="tel" id="phone" name="phone">
+
+				<label for="message">Message: </label>
+				<textarea id="message" name="message" rows="4" required></textarea>
+
+				<button type="submit" class="submit-button" onclick="sendEmail()">Soumettre</button>
+			</form>
+		</div>
+	</section>
+
+	<section class="contact-info">
+		<h2>Coordonnées</h2>
+		<address>
+			Archivage<br>
+			Algerie,Ain temouchent<br>
+			Téléphone: <a href="tel:1234567890">0791646289</a><br>
+			Email: <a href="mailto:info@example.com">bkyassine0105@gmail.com</a>
+		</address>
+	</section>
+
+	<footer>
+		<p>
+		© 2024. All rights reserved.
+		</p>
+	</footer>
+	<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script type="text/javascript">
+		
+        (function(){
+            emailjs.init("xAkZld6b33ZalJGje"); // Replace 'YOUR_USER_ID' with your actual user ID from EmailJS
+        })();
+        
+        function sendEmail() {
+            var name = document.getElementById('name').value;
+            var email = document.getElementById('email').value;
+            var phone = document.getElementById('phone').value;
+            var message = document.getElementById('message').value;
+
+            var templateParams = {
+                name: name,
+                email: email,
+                phone: phone,
+                message: message
+            };
+
+            emailjs.send('service_duyc0v9', 'template_nhc3he9', templateParams)
+                .then(alert("email est envoyer"))
+        }
+    </script>
+</body>
+
+</html>

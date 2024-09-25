@@ -1,0 +1,143 @@
+
+/* Header styles */
+.header {
+	background-size: 400% 400%;
+}
+.navbar{
+	background: transparent !important;
+}
+.navbar-brand{
+	color: #000000;
+	font-family: "Bebas Neue", sans-serif;
+	font-size: 30px;
+}
+.navbar-brand:focus, 
+.navbar-brand:hover {
+	color: #000000 !important;
+}
+.nav-link{
+	color: #000000;
+	font-family: "Montserrat", sans-serif;
+	font-weight: 600;
+}
+.reachUs-button {
+	padding: 1rem;
+	background-color: #0dac30;
+	border: none;
+	color: white;
+	border-radius: 4px;
+	cursor: pointer;
+}
+.reachUs-button:hover{
+	background-color: #1ac840;
+}
+
+/* banner section styles */
+.banner {
+	text-align: center;
+	background-color: #ffffff;
+	margin: 0 auto;
+}
+
+.banner img {
+	max-width: 100%;
+	height: auto;
+}
+/* Contact form styles */
+.contact-form {
+	padding: 40px 0;
+	margin: 0 10px;
+}
+
+.form-container {
+	max-width: 40%;
+	margin: 0 auto;
+	padding: 20px;
+	background-color: #ffffff;
+	border-radius: 10px;
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.contact-form h2 {
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+.form-group {
+	margin-bottom: 20px;
+}
+
+.form-container label {
+	display:block;
+	font-weight: bold;
+}
+.form-container input, textarea{
+	width: 100%;
+	padding: 10px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	margin-bottom: 1rem;
+	resize: vertical;
+}
+.submit-button {
+	padding: 10px 20px;
+	background-color: #0dac30;
+	border: none;
+	color: white;
+	border-radius: 4px;
+	font-size: 1rem;
+	cursor: pointer;
+}
+
+/* Contact info styles */
+.contact-info {
+	text-align: center;
+	padding: 50px 0;
+	background-color: #f7f7f7;
+}
+
+.contact-info h2 {
+	margin-bottom: 20px;
+}
+
+/* Footer styles */
+footer {
+	padding: 20px;
+	text-align: center;
+	background-color: #333;
+	color: white;
+}
+/* Hamburger styles */
+.hamburger {
+	display: none;
+	color: rgb(0, 0, 0);
+	font-size: 1.5rem;
+	cursor: pointer;
+}
+
+@keyframes animate {
+	0% {
+		background-position: 0% 50%; 
+	}
+	100% {
+		background-position: 100% 50%;
+	}
+}
+@media (min-width: 768px) and (max-width: 991px){
+    
+.navbar-nav {
+	background: #fff;
+}
+.nav-link{
+	color: #262626;
+}
+}
+
+@media (max-width: 767px){
+	.navbar-nav {
+		background: #fff;
+	}
+	.nav-link{
+		color: #262626;
+	}
+}

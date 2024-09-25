@@ -1,0 +1,60 @@
+<!DOCTYPE html> 
+<html lang="en">
+  <!-- divinectorweb.com -->
+<head>
+    <meta charset="UTF-8">  
+    <title>à propos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.0/css/bootstrap.min.css" rel="stylesheet">
+    {% load static %}
+    <link rel="icon" href="static/Logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="{% static "styleabout.css" %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" /> 
+</head>
+<body>
+    
+    <div class="header">
+        <nav class="navbar navbar-expand-lg bg-light text-center ">
+  <div class="container">
+    <a class="navbar-brand" href="https://archivage.com/">Archivage</a>
+    <button class="navbar-toggler bg-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" href="https://archivage.com/">Accueil</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'about' %}">à propos</a>
+        </li>  
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'contact' %}">Contact</a>
+        </li>  
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'pdf' %}">Extraire le PDF</a>
+        </li> 
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'OCR' %}">OCR</a>
+        </li> 
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+
+<section class="about-us">
+    <div class="about">
+      <div class="text">
+        <h2>A propos</h2>
+        <h5> Plateforme web d'archivage numérique </h5>
+          <p>Nous, troisième année d'informatique à l'Université d'Ain Temouchent, avons entrepris ce projet sur la base d'une recherche minutieuse dans les fichiers PDF que nous avons nous-mêmes numérisés, et les écrits qu'ils contiennent ont été extraits puis téléchargés.
+            Toutes les langues dans les fichiers sont parfaitement recherchées</p>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>

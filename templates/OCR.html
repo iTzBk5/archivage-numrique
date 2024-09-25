@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<!-- Coding By CodingNepal - www.codingnepalweb.com -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Archives</title>
+  
+  {% load static %}
+  <link rel="icon" href="static/Logo.png" type="image/x-icon">
+  <link rel="stylesheet" href="{% static "ocrpdf.css" %}">
+  <style>
+    .blurred {
+      filter: blur(4px);
+    }
+  
+    /* Exclude the login form container from the blur effect */
+    .login-container {
+      filter: none; /* Remove blur effect from the login form */
+    }
+  
+    .login-modal {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      padding: 20px;
+      background-color: white;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+      z-index: 1001; /* Higher than other content */
+      width: 300px;
+    }
+  
+  </style>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" /> 
+  <!-- Google Icons Link -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0">
+</head>
+<body>
+  <div class="overlay blurred" id="mainOverlay">
+    <header>
+      <nav class="navbar">
+        
+        <a class="navbar-brand" href="https://archivage.com/">Archivage</a>
+        </a>
+        <ul class="menu-links">
+          <li><a href="https://archivage.com/">Accueil</a></li>
+          <li><a href="{% url 'about' %}">à propos</a></li>
+          <li><a href="{% url 'contact' %}" >Contact</a></li>
+          <li><a href="{% url 'pdf' %}">Extraire le PDF</a></li>
+          <li><a href="{% url 'OCR' %}">OCR</a></li>
+        </ul>
+        <span id="hamburger-btn" class="material-symbols-outlined">menu</span>
+      </nav>
+    </header>
+
+    <section class="hero-section">
+      <div class="content">
+          <h1>Upload une image pour l'OCR</h1>
+          <form method="post" enctype="multipart/form-data" id="uploadForm" style="display: none;">
+              {% csrf_token %}
+              <input type="file" name="image_file" accept="image/*" required>
+              <button type="submit" class="button">
+                <span class ="button-content">Upload</span>
+              </button>
+          </form>
+      </div>
+    </section>
+  </div>
+  <div class="login-container">
+    <div class="login-modal" id="loginModal">
+      <h2>Login</h2>
+      <form id="loginForm">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required><br><br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required><br><br>
+        <button type="submit">Login</button>
+      </form>
+    </div>
+  </div>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/otplib@10/dist/otplib.browser.js"></script>
+
+  <script>
+    document.getElementById('loginForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      var username = document.getElementById('username').value;
+      var password = document.getElementById('password').value;
+      if (username === 'bk' && password === '123') {
+          // Correctly remove the blur
+          document.getElementById('mainOverlay').classList.remove('blurred');
+          document.getElementById('loginModal').style.display = 'none';
+          document.getElementById('uploadForm').style.display = 'block'; // Show upload form after successful login
+          enableInteractions();  // Enable all interactions after successful login
+      } else {
+          alert('Incorrect Username or Password!');
+      }
+  });
+  
+  function disableInteractions() {
+  
+      // Prevent default on all anchor tags
+      document.querySelectorAll("a").forEach(function(link) {
+          link.onclick = function(e) {
+              e.preventDefault();
+              alert('Please login to navigate.');
+          };
+      });
+  
+      // Disable hamburger menu initially
+      document.getElementById("hamburger-btn").onclick = function(e) {
+          e.preventDefault();
+      };
+  }
+  
+  function enableInteractions() {
+      // Enable form submission
+      document.getElementById("uploadForm").onsubmit = function() { return true; };
+  
+      // Enable all anchor tags
+      document.querySelectorAll("a").forEach(function(link) {
+          link.onclick = function() { return true; };
+      });
+  
+      // Enable hamburger menu
+      const hamburgerBtn = document.getElementById("hamburger-btn");
+      hamburgerBtn.onclick = function() {
+          document.querySelector("header").classList.toggle("show-mobile-menu");
+      };
+  }
+  
+  // Initially disable interactions
+  disableInteractions();
+    
+  </script>    
+</body>
+</html> 

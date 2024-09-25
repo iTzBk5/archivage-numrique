@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<!-- Coding By CodingNepal - www.codingnepalweb.com -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Archives</title>
+  
+  {% load static %}
+  <link rel="icon" href="static/Logo.png" type="image/x-icon">
+  <link rel="stylesheet" href="{% static "SEARC.css" %}">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" /> 
+  <!-- Google Icons Link -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0">
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      
+      <a class="navbar-brand" href="https://archivage.com/">Archivage</a>
+      </a>
+      <ul class="menu-links">
+        <li><a href="https://archivage.com/">Accueil</a></li>
+        <li><a href="{% url 'about' %}">à propos</a></li>
+        <li><a href="{% url 'contact' %}" >Contact</a></li>
+        <li><a href="{% url 'pdf' %}">Extraire le PDF</a></li>
+        <li><a href="{% url 'OCR' %}">OCR</a></li>
+      </ul>
+      <span id="hamburger-btn" class="material-symbols-outlined">menu</span>
+    </nav>
+  </header>
+
+  <section class="hero-section">
+    <div class="content">
+      <h1>Recherche ce que vous voulez dans les archives</h1>
+      <form class="search-form">
+        <input class="search-input" type="text"  name="q" placeholder="Recharcher...">
+        <button class="material-symbols-outlined" type="submit" >Search</button>
+      </form>
+      
+    <!-- Display the query -->
+    <p>Résultats de recherche pour: <strong>{{ query }}</strong></p>
+      
+    </div>
+  </section>
+    
+  <!-- Display Search Results -->
+  <ul class="navbar-nav"> 
+    {% for result in results %}
+    <div class="card">
+      <div class="contentc">
+        <a class="heading" href="{{ result.url }}">{{ result.title }}</a></li>
+        <p class="para">{{ result.summary }}</p>
+        <a href="{{ result.url }}"><button class="btn" >savoir plus</button></a>
+      </div>
+    </div>
+    {% endfor %}
+  </ul>
+
+
+
+  <script>
+    const header = document.querySelector("header");
+    const hamburgerBtn = document.querySelector("#hamburger-btn");
+    const closeMenuBtn = document.querySelector("#close-menu-btn");
+
+    // Toggle mobile menu on hamburger button click
+    hamburgerBtn.addEventListener("click", () => header.classList.toggle("show-mobile-menu"));
+
+    // Close mobile menu on close button click
+    closeMenuBtn.addEventListener("click", () => hamburgerBtn.click());
+  </script>
+</body>
+</html>
